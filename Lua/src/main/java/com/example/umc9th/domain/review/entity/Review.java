@@ -23,7 +23,7 @@ public class Review {
     private Long id;
 
     @Column(name = "rating", nullable = false)
-    private Integer rating;
+    private int rating;
 
     @Column(name = "review_text")
     private String reviewText;
@@ -39,4 +39,5 @@ public class Review {
     @JoinColumn(name="shop_id")
     @ManyToOne(fetch = FetchType.LAZY)
     private Shop shop;
+
 }

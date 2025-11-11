@@ -1,5 +1,9 @@
 package com.example.umc9th.domain.shop.entity;
 
+import com.example.umc9th.domain.local.entity.Local;
+import java.util.ArrayList;
+import java.util.List;
+
 import com.example.umc9th.domain.user.entity.User;
 import com.example.umc9th.global.enums.Category;
 import jakarta.persistence.*;
@@ -39,4 +43,12 @@ public class Shop {
     @ManyToOne(fetch = FetchType.LAZY)
     private User user;
 
+    @ManyToMany
+    @JoinTable(
+        name = "shop_local",
+        joinColumns = @JoinColumn(name = "shop_id"),
+        inverseJoinColumns = @JoinColumn(name = "local_id")
+    )
+    @Builder.Default
+    private List<Local> locals = new ArrayList<>();
 }

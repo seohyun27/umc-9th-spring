@@ -10,15 +10,16 @@ import java.time.LocalDateTime;
 public class MyMissionDto {
 
     // MemberMission 엔티티의 정보
-    private boolean isCompleted;
+    private Boolean isCompleted;
     private LocalDateTime finishAt;
 
     // Mission 엔티티의 정보
-    private String dtype;
+    private char dtype;
     private String text;
     private Integer point;
-    private LocalDate finishDate;
+    private LocalDateTime finishDate;
 
     // Shop 엔티티의 정보
     private String shopName;
 }
+

@@ -35,8 +35,27 @@ LIMIT ?;
  success로 따로 처리하지 말까 라는 생각이 들었다. 일단 지금 단계에서는 success로 처리하기로 했다.
 
 #### 홈 화면 쿼리
-(현재 선택 된 지역에서 도전이 가능한 미션 목록, 페이징 포함)
-ㄴ> shop 엔티티 추가 후 작성
+```sql
+SELECT
+    m.mission_id,
+    m.status,
+    m.mission_point,
+    m.is_success,
+    s.name AS shop_name,
+	s.category
+FROM
+    mission m
+JOIN
+    shop s ON m.shop_id = s.shop_id
+WHERE
+    m.user_id = :userId
+    AND s.address LIKE CONCAT('%', :region, '%')
+    AND m.status = 'IN_PROCESS'
+ORDER BY
+    m.mission_id DESC
+LIMIT :pageSize OFFSET :offset;
+```
 
+is_success로 status를 처리하는게 불필요하게 느껴져 수정 고려.
 
 

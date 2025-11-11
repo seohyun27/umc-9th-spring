@@ -35,3 +35,6 @@ out/
 
 ### VS Code ###
 .vscode/
+
+### Q클래스 및 빌드 관련 제외 ###
+/build/

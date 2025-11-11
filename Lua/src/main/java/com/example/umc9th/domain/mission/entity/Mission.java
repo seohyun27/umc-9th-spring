@@ -35,7 +35,7 @@ public class Mission {
     private String authCode;
 
     @Column(name = "mission_point", nullable = false)
-    private Integer missionPoint;
+    private int missionPoint;
 
     @JoinColumn(name="user_id")
     @ManyToOne(fetch = FetchType.LAZY)
@@ -44,4 +44,6 @@ public class Mission {
     @JoinColumn(name="shop_id")
     @ManyToOne(fetch = FetchType.LAZY)
     private Shop shop;
+
 }
+

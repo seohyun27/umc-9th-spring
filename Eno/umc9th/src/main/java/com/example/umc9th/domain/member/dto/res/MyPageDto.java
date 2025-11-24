@@ -14,5 +14,5 @@ public class MyPageDto {
     private Gender gender;
     private LocalDate birthDate;
     private String address;
-    private Long totalPoint;
+    private int totalPoint;
 }

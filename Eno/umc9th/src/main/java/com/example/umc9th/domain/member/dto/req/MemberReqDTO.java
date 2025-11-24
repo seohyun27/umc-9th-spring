@@ -13,6 +13,6 @@ public class MemberReqDTO {
             LocalDate birth,
             String address,
             String specAddress,
-            List<Long> preferCategory
+            List<Long> preferCategory   // 선호 음식 카테고리 정보들을 리스트로 받아옴
     ){}
 }

@@ -9,7 +9,7 @@ import org.springframework.http.HttpStatus;
 @AllArgsConstructor
 public enum ReviewSuccessCode implements BaseSuccessCode {
     CREATED(HttpStatus.CREATED,
-            "MEMBER201_1",
+            "REVIEW201_1",
             "성공적으로 리뷰 작성이 완료되었습니다."),
     ;
 

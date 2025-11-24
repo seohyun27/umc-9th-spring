@@ -1,7 +1,7 @@
 package com.example.umc9th.global.apiPayload.handler;
 
 import com.example.umc9th.global.apiPayload.ApiResponse;
-import com.example.umc9th.global.apiPayload.code.BaseCode;
+import com.example.umc9th.global.apiPayload.code.BaseErrorCode;
 import com.example.umc9th.global.apiPayload.code.GeneralErrorCode;
 import com.example.umc9th.global.apiPayload.exception.GeneralException;
 import org.springframework.http.ResponseEntity;
@@ -28,14 +28,14 @@ public class GeneralExceptionAdvice {
         String errorMessage = String.format("파라미터 '%s'(%s 타입) 이 누락되었습니다.",missingParam,expectedType);
 
         // 코드 받기
-        BaseCode code  = GeneralErrorCode.BAD_REQUEST;
+        BaseErrorCode code  = GeneralErrorCode.BAD_REQUEST;
         return ResponseEntity.status(code.getStatus())
                 .body(ApiResponse.onFailure(code,errorMessage));
     }
     @ExceptionHandler(Exception.class)
     public ResponseEntity<ApiResponse<String>> handleException(Exception ex)
     {
-        BaseCode code = GeneralErrorCode.INTERNAL_SERVER_ERROR;
+        BaseErrorCode code = GeneralErrorCode.INTERNAL_SERVER_ERROR;
         return ResponseEntity.status(code.getStatus())
                 .body(ApiResponse.onFailure(code,ex.getMessage()));
     }

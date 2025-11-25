@@ -14,7 +14,7 @@ import java.util.List;
 
 @Repository     // QueryDSL의 구현체인데 왜 워크북에는 서비스 클래스로 되어 있지?
 @RequiredArgsConstructor
-public class reviewRepositoryQueryDslImpl implements reviewRepositoryQueryDsl {
+public class ReviewRepositoryQueryDslImpl implements ReviewRepositoryQueryDsl {
 
     private final EntityManager em;
 

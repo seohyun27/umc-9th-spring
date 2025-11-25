@@ -1,18 +1,18 @@
 package com.example.umc9th.domain.member.entity;
 
 import jakarta.persistence.*;
-import lombok.AccessLevel;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 @Entity
 @Getter
+@Builder
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class FavoriteFood {
+@AllArgsConstructor(access = AccessLevel.PROTECTED) // Builder.Default를 위해 필요
+public class MemberFood {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "favorite_food_id")
+    @Column(name = "member_food_id")
     private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)

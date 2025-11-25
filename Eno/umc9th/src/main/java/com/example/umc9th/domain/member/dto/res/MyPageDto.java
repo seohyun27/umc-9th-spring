@@ -1,4 +1,4 @@
-package com.example.umc9th.domain.member.dto;
+package com.example.umc9th.domain.member.dto.res;
 
 import com.example.umc9th.domain.member.enums.Gender;
 import lombok.AllArgsConstructor;
@@ -14,5 +14,5 @@ public class MyPageDto {
     private Gender gender;
     private LocalDate birthDate;
     private String address;
-    private Long totalPoint;
+    private int totalPoint;
 }

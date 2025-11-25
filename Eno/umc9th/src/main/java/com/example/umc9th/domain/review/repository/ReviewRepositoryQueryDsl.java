@@ -5,7 +5,7 @@ import com.querydsl.core.types.Predicate;
 
 import java.util.List;
 
-public interface reviewRepositoryQueryDsl {
+public interface ReviewRepositoryQueryDsl {
 
     // 구현하고 싶은 메소드들을 인터페이스 안에서 미리 정의
     // 인터페이스에 정의하는 모든 메서드는 자동으로 public이고 abstract가 됨

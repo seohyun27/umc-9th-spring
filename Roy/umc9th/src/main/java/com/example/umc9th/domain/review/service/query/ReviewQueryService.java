@@ -1,21 +1,20 @@
-package com.example.umc9th.domain.review.service;
+package com.example.umc9th.domain.review.service.query;
 
-import com.example.umc9th.domain.review.dto.ReviewResDto;
+import com.example.umc9th.domain.review.dto.ReviewResDTO;
 import com.example.umc9th.domain.review.entity.QReview;
 import com.example.umc9th.domain.review.repository.ReviewQueryDslImpl;
+import com.example.umc9th.domain.review.repository.ReviewRepository;
 import com.querydsl.core.BooleanBuilder;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
+@RequiredArgsConstructor
 public class ReviewQueryService {
-    private final ReviewQueryDslImpl reviewQueryDsl;
-    public ReviewQueryService(ReviewQueryDslImpl reviewQueryDsl)
-    {
-        this.reviewQueryDsl = reviewQueryDsl;
-    }
-    public List<ReviewResDto.ReviewItemDTO> searchReview(String query, String type) {
+    private final ReviewRepository reviewRepository;
+    public List<ReviewResDTO.ReviewItemDTO> searchReview(String query, String type) {
         QReview review = QReview.review;
         BooleanBuilder builder = new BooleanBuilder();
 
@@ -34,6 +33,6 @@ public class ReviewQueryService {
             builder.and(review.store.name.contains(firstQuery));
             builder.and(review.rate.eq(Integer.parseInt(secondQuery)));
         }
-        return reviewQueryDsl.searchReview(builder);
+        return reviewRepository.searchReview(builder);
     }
 }

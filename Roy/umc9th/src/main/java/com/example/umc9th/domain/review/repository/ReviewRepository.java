@@ -7,7 +7,7 @@ import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 
-public interface ReviewRepository extends JpaRepository<Review, Long> {
+public interface ReviewRepository extends JpaRepository<Review, Long>,ReviewQueryDsl {
 
     @Query("SELECT r FROM Review r " +
             "LEFT JOIN FETCH r.reviewPhotos " +

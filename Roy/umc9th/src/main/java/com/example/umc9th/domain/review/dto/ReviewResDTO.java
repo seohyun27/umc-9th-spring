@@ -4,7 +4,9 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 
-public class ReviewResDto {
+import java.time.LocalDateTime;
+
+public class ReviewResDTO {
 
     @Builder
     @Getter
@@ -15,4 +17,6 @@ public class ReviewResDto {
         String content;
         String storeName;
     }
+    @Builder
+    public record registerDTO(Long reviewId, LocalDateTime createAt){}
 }

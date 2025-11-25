@@ -1,6 +1,7 @@
 package com.example.umc9th.domain.store.dto;
 
 import com.example.umc9th.global.annotation.ExistCategory;
+import com.example.umc9th.global.annotation.ExistMember;
 import com.example.umc9th.global.annotation.ExistRegion;
 import com.example.umc9th.global.annotation.ManagerPermission;
 import jakarta.validation.constraints.NotBlank;
@@ -18,10 +19,10 @@ public class StoreReqDTO {
             LocalTime openTime,
             LocalTime closeTime,
             @NotNull @ExistCategory
-            Long category,
-            @NotNull @ManagerPermission
-            Long member,
+            Long categoryId,
+            @NotNull @ExistMember @ManagerPermission
+            Long memberId,
             @NotNull @ExistRegion
-            Long region
+            Long regionId
     ){}
 }

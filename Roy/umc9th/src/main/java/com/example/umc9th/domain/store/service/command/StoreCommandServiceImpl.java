@@ -1,16 +1,7 @@
 package com.example.umc9th.domain.member.service.command;
 
-import com.example.umc9th.domain.member.converter.MemberConverter;
-import com.example.umc9th.domain.member.dto.MemberReqDTO;
-import com.example.umc9th.domain.member.dto.MemberResDTO;
-import com.example.umc9th.domain.member.entity.Food;
 import com.example.umc9th.domain.member.entity.Member;
-import com.example.umc9th.domain.member.entity.Preference;
-import com.example.umc9th.domain.member.exception.FoodException;
-import com.example.umc9th.domain.member.exception.code.FoodErrorCode;
-import com.example.umc9th.domain.member.repository.FoodRepository;
 import com.example.umc9th.domain.member.repository.MemberRepository;
-import com.example.umc9th.domain.member.repository.PreferenceRepository;
 import com.example.umc9th.domain.store.converter.StoreConverter;
 import com.example.umc9th.domain.store.dto.StoreReqDTO;
 import com.example.umc9th.domain.store.dto.StoreResDTO;
@@ -37,9 +28,9 @@ public class StoreCommandServiceImpl implements StoreCommandService {
     @Override
     public StoreResDTO.registerDTO register(StoreReqDTO.registerDTO dto)
     {
-        Member member = memberRepository.findById(dto.member()).orElse(null);
-        Region region = regionRepository.findById(dto.region()).orElse(null);
-        Category category = categoryRepository.findById(dto.category()).orElse(null);
+        Member member = memberRepository.findById(dto.memberId()).orElse(null);
+        Region region = regionRepository.findById(dto.regionId()).orElse(null);
+        Category category = categoryRepository.findById(dto.categoryId()).orElse(null);
         Store store = StoreConverter.toStore(dto,member,category,region);
         storeRepository.save(store);
         return StoreConverter.toRegisterDTO(store);

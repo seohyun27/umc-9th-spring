@@ -19,13 +19,7 @@ public class ManagerPermissionValidator implements ConstraintValidator<ManagerPe
     public boolean isValid(Long value, ConstraintValidatorContext context) {
         if (value == null) return true;
         Member member = memberRepository.findById(value).orElse(null);
-        if (member == null)
-        {
-            context.buildConstraintViolationWithTemplate(MemberErrorCode.NOT_FOUND.getMessage()).addConstraintViolation();
-            return false;
-        }
         boolean isValid = member.getType() == MemberType.Manager;
-
         if (!isValid) {
             // 이 부분에서 아까 디폴트 메시지를 초기화 시키고, 새로운 메시지로 덮어씌우게 됩니다.
             context.disableDefaultConstraintViolation();

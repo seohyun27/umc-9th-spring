@@ -1,0 +1,19 @@
+GET http://localhost:8080/reviews/search?query=1&type=star
+Accept: application/json
+###
+
+
+POST http://localhost:8080/reviews/add
+Content-Type: application/json
+
+{
+  "rate": 3,
+  "content": "너무 맛있어요",
+  "reviewPhotos": ["d","d","d"],
+  "memberId": 1,
+  "storeId": 1
+}
+### 떡볶이가 들어간 가게 찾기
+GET http://localhost:8080/reviews/search?query=떡볶이&type=store
+Accept: application/json
+###

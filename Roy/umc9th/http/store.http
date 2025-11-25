@@ -4,10 +4,11 @@ Content-Type: application/json
 
 {
   "address": "대구",
-  "name": "김밥천국",
+  "name": "떡볶이나라",
   "openTime": "10:00:00",
   "closeTime" : "12:00:00",
-  "category" : 1,
-  "member": 1,
-  "region" : 1
+  "categoryId" : 1,
+  "memberId": 1,
+  "regionId" : 1
 }
+

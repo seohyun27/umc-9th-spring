@@ -1,0 +1,13 @@
+### 특정 지역에 가게 등록하기
+POST http://localhost:8080/store/add
+Content-Type: application/json
+
+{
+  "address": "대구",
+  "name": "김밥천국",
+  "openTime": "10:00:00",
+  "closeTime" : "12:00:00",
+  "category" : 1,
+  "member": 1,
+  "region" : 1
+}

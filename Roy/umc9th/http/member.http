@@ -1,0 +1,12 @@
+### 특정 지역에 가게 등록하기
+POST http://localhost:8080/sign-up
+Content-Type: application/json
+
+{
+  "name": "yujin",
+  "gender": 1,
+  "type": 0,
+  "birth": "2002-10-15",
+  "address": "대구",
+  "preferCategory": []
+}

@@ -1,15 +1,14 @@
-package com.example.umc9th.domain.test.exception.code;
+package com.example.umc9th.domain.store.exception.code;
 
 import com.example.umc9th.global.apiPayload.code.BaseErrorCode;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import org.springframework.http.HttpStatus;
 
-
 @Getter
 @AllArgsConstructor
-public enum TestErrorCode implements BaseErrorCode {
-    TEST_EXCEPTION(HttpStatus.FORBIDDEN,"TEST400_1","이거는 테스트"),;
+public enum CategoryErrorCode implements BaseErrorCode {
+    NOT_FOUND(HttpStatus.NOT_FOUND,"CATEGORY404_1","카테고리가 존재하지 않습니다.");
     private final HttpStatus status;
     private final String code;
     private final String message;

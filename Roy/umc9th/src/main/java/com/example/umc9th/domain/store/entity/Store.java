@@ -1,9 +1,10 @@
 package com.example.umc9th.domain.store.entity;
 
+import com.example.umc9th.domain.member.entity.Member;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.sql.Timestamp;
+import java.time.LocalTime;
 
 @Entity
 @Builder
@@ -17,6 +18,10 @@ public class Store {
   @Column(name = "store_id")
   private Long id;
 
+  @ManyToOne(fetch = FetchType.LAZY)
+  @JoinColumn(name="manager_id",nullable = false)
+  private Member member;
+
   @Column(name = "store_address", length = 50, nullable = false)
   private String address;
 
@@ -24,10 +29,10 @@ public class Store {
   private String name;
 
   @Column(name = "open_time")
-  private Timestamp open_time;
+  private LocalTime open_time;
 
   @Column(name = "close_time")
-  private Timestamp close_time;
+  private LocalTime close_time;
 
   @ManyToOne(fetch = FetchType.LAZY)
   @JoinColumn(name = "category_id")

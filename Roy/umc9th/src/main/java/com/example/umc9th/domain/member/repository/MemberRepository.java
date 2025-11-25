@@ -9,7 +9,4 @@ import java.util.List;
 
 
 public interface MemberRepository extends JpaRepository<Member, Long> {
-
-    @Query("SELECT m FROM Member m WHERE m.id = :memberId")
-    List<Member> findMemberById(@Param("memberId") Long memberId);
 }

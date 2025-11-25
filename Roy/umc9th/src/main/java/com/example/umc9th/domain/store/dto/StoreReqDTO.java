@@ -17,11 +17,11 @@ public class StoreReqDTO {
             String name,
             LocalTime openTime,
             LocalTime closeTime,
-            @ExistCategory
+            @NotNull @ExistCategory
             Long category,
             @NotNull @ManagerPermission
             Long member,
-            @ExistRegion
+            @NotNull @ExistRegion
             Long region
     ){}
 }

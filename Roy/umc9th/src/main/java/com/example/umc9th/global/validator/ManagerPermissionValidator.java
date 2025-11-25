@@ -1,7 +1,6 @@
 package com.example.umc9th.global.validator;
 import com.example.umc9th.domain.member.entity.Member;
 import com.example.umc9th.domain.member.enums.MemberType;
-import com.example.umc9th.domain.member.exception.FoodException;
 import com.example.umc9th.domain.member.exception.code.MemberErrorCode;
 import com.example.umc9th.domain.member.repository.MemberRepository;
 import com.example.umc9th.global.annotation.ManagerPermission;
@@ -9,8 +8,6 @@ import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
-
-import java.util.List;
 
 @Component
 @RequiredArgsConstructor
@@ -20,8 +17,13 @@ public class ManagerPermissionValidator implements ConstraintValidator<ManagerPe
 
     @Override
     public boolean isValid(Long value, ConstraintValidatorContext context) {
-        Member member = memberRepository.findById(value)
-                .orElseThrow(()->new FoodException(MemberErrorCode.NOT_FOUND));;
+        if (value == null) return true;
+        Member member = memberRepository.findById(value).orElse(null);
+        if (member == null)
+        {
+            context.buildConstraintViolationWithTemplate(MemberErrorCode.NOT_FOUND.getMessage()).addConstraintViolation();
+            return false;
+        }
         boolean isValid = member.getType() == MemberType.Manager;
 
         if (!isValid) {
@@ -29,8 +31,6 @@ public class ManagerPermissionValidator implements ConstraintValidator<ManagerPe
             context.disableDefaultConstraintViolation();
             context.buildConstraintViolationWithTemplate(MemberErrorCode.FORBIDDEN.getMessage()).addConstraintViolation();
         }
-
         return isValid;
-
     }
 }

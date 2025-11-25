@@ -5,6 +5,7 @@ import com.example.umc9th.domain.store.dto.StoreResDTO;
 import com.example.umc9th.domain.store.exception.code.StoreSuccessCode;
 import com.example.umc9th.domain.store.service.command.StoreCommandService;
 import com.example.umc9th.global.apiPayload.ApiResponse;
+import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,7 +21,7 @@ public class StoreController {
     }
 
     @PostMapping("/add")
-    public ApiResponse<StoreResDTO.registerDTO> registerStore(@RequestBody StoreReqDTO.registerDTO dto)
+    public ApiResponse<StoreResDTO.registerDTO> registerStore(@RequestBody @Valid StoreReqDTO.registerDTO dto)
     {
         return ApiResponse.onSuccess(StoreSuccessCode.CREATED, storeCommandService.register(dto));
     }

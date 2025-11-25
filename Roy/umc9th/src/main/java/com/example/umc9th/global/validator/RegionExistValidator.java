@@ -17,6 +17,7 @@ public class RegionExistValidator implements ConstraintValidator<ExistRegion, Lo
 
     @Override
     public boolean isValid(Long value, ConstraintValidatorContext context) {
+        if (value==null) return true;
         boolean isValid = regionRepository.existsById(value);
 
         if (!isValid) {

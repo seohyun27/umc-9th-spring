@@ -1,8 +1,10 @@
 package com.example.umc9th.domain.mission.controller;
 
+import com.example.umc9th.domain.mission.dto.res.MemberMissionResDTO;
 import com.example.umc9th.domain.mission.dto.res.MissionResDTO;
 import com.example.umc9th.domain.mission.exception.code.MemberMissionSuccessCode;
 import com.example.umc9th.domain.mission.exception.code.MissionSuccessCode;
+import com.example.umc9th.domain.mission.service.command.MemberMissionCommandService;
 import com.example.umc9th.domain.mission.service.command.MissionCommandService;
 import com.example.umc9th.domain.mission.service.query.MissionQueryService;
 import com.example.umc9th.global.apiPayload.ApiResponse;
@@ -18,6 +20,7 @@ import org.springframework.web.bind.annotation.*;
 public class MissionController implements MissionControllerDocs {
     private final MissionCommandService missionCommandService;
     private final MissionQueryService missionQueryService;
+    private final MemberMissionCommandService memberMissionCommandService;
 
     // 미션 도전하기
     @PostMapping("/missions/{missionId}/member-missions")
@@ -39,5 +42,22 @@ public class MissionController implements MissionControllerDocs {
             @PageableDefault(page = 0, size = 10, sort = "finishDate", direction = Sort.Direction.DESC) Pageable pageable
     ){
         return ApiResponse.onSuccess(MissionSuccessCode.FOUND, missionQueryService.findShopMission(shopId, pageable));
+    }
+
+    // 진행 중인 미션을 진행 완료로 바꾸기
+    @PatchMapping("/missions/{missionId}/members/{memberId}/complete")
+    @Override
+    public ApiResponse<MemberMissionResDTO.MissionFinishDTO> completeMission(
+            @PathVariable Long missionId,
+            @PathVariable Long memberId
+    ) {
+        /**
+         * 마찬가지로 로그인 로직이 없으므로 멤버 id를 경로에서 받아옴
+         */
+
+        return ApiResponse.onSuccess(
+                MemberMissionSuccessCode.MISSION_COMPLETED,
+                memberMissionCommandService.completeMission(missionId, memberId)
+        );
     }
 }

@@ -7,13 +7,9 @@ import org.springframework.http.HttpStatus;
 
 @Getter
 @AllArgsConstructor
-public enum MissionErrorCode implements BaseErrorCode {
-    SHOP_NOT_FOUND(HttpStatus.NOT_FOUND,
-            "MISSION404_1",
-            "해당하는 가게가 존재하지 않습니다."),
-
+public enum MemberMissionErrorCode implements BaseErrorCode {
     NOT_FOUND(HttpStatus.NOT_FOUND,
-            "MISSION404_2",
+            "MEMBER_MISSION404_1",
             "해당하는 미션이 존재하지 않습니다.");
 
     private final HttpStatus status;

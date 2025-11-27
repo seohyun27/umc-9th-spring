@@ -1,5 +1,7 @@
 package com.example.umc9th.domain.review.service.query;
 
+import com.example.umc9th.domain.member.entity.Member;
+import com.example.umc9th.domain.member.repository.MemberRepository;
 import com.example.umc9th.domain.review.converter.ReviewConverter;
 import com.example.umc9th.domain.review.entity.Review;
 import com.example.umc9th.domain.review.exception.ReviewException;
@@ -18,6 +20,7 @@ import org.springframework.stereotype.Service;
 public class ReviewQueryServiceImpl implements ReviewQueryService {
     final ShopRepository shopRepository;
     final ReviewRepository reviewRepository;
+    final MemberRepository memberRepository;
 
     @Override
     public ReviewResDTO.ReviewPreViewListDTO findReview(
@@ -28,6 +31,19 @@ public class ReviewQueryServiceImpl implements ReviewQueryService {
                 .orElseThrow(() -> new ReviewException(ReviewErrorCode.SHOP_NOT_FOUND));
 
         Page<Review> result = reviewRepository.findAllByShopId(shopId, pageable);
+
+        return ReviewConverter.toReviewPreviewListDTO(result);
+    }
+
+    @Override
+    public ReviewResDTO.ReviewPreViewListDTO findMyReview(
+            Long memberId,
+            Pageable pageable
+    ){
+        Member member = memberRepository.findById(memberId)
+                .orElseThrow(() -> new ReviewException(ReviewErrorCode.MEMBER_NOT_FOUND));
+
+        Page<Review> result = reviewRepository.findAllByMemberId(memberId, pageable);
 
         return ReviewConverter.toReviewPreviewListDTO(result);
     }

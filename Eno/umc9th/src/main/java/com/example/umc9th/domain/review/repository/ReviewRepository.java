@@ -1,5 +1,7 @@
 package com.example.umc9th.domain.review.repository;
-import com.example.umc9th.domain.review.entity.ShopReview;
+import com.example.umc9th.domain.review.entity.Review;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -15,7 +17,7 @@ import java.util.List;
  * 사진의 경우 여러 장이 존재한다면 같은 멤버 데이터에 다른 사진을 가진 여러 장의 데이터를 가져오게 되므로 사진과 관련된 구문은 생략하였다
  **/
 
-public interface ReviewRepository extends JpaRepository<ShopReview, Long>, ReviewRepositoryQueryDsl {
+public interface ReviewRepository extends JpaRepository<Review, Long>, ReviewRepositoryQueryDsl {
 
     // 메인 인터페이스인 reviewRepository가 JpaRepository와 직접 만든 reviewRepositoryQueryDsl를 둘 다 상속
     // 서비스 계층에서는 ReviewRepository 하나만 주입받으면 reviewRepository.save() (JPA 기본 기능)와 reviewRepository.searchShopReview() (내가 만든 QueryDSL 기능)를 모두 사용할 수 있게 된다.
@@ -28,9 +30,12 @@ public interface ReviewRepository extends JpaRepository<ShopReview, Long>, Revie
      **/
     @Query("""
        SELECT sr
-       FROM ShopReview sr
+       FROM Review sr
        JOIN FETCH sr.member m
        WHERE sr.shop.id = :shopId
        """)
-    List<ShopReview> findAllByShopIdWithMember(@Param("shopId") Long shopId);
+    List<Review> findAllByShopIdWithMember(@Param("shopId") Long shopId);
+
+
+    Page<Review> findAllByShopId(Long shopId, Pageable pageable);
 }

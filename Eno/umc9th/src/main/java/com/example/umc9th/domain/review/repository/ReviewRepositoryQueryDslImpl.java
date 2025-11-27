@@ -2,7 +2,7 @@ package com.example.umc9th.domain.review.repository;
 
 import com.example.umc9th.domain.member.entity.QMember;
 import com.example.umc9th.domain.review.entity.QShopReview;
-import com.example.umc9th.domain.review.entity.ShopReview;
+import com.example.umc9th.domain.review.entity.Review;
 import com.example.umc9th.domain.shop.entity.QShop;
 import com.querydsl.core.types.Predicate;
 import com.querydsl.jpa.impl.JPAQueryFactory;
@@ -19,7 +19,7 @@ public class ReviewRepositoryQueryDslImpl implements ReviewRepositoryQueryDsl {
     private final EntityManager em;
 
     @Override
-    public List<ShopReview> searchShopReview(Predicate predicate){
+    public List<Review> searchShopReview(Predicate predicate){
         // 인자의 Predicate의 경우 queryDSL에서 제공하는 것인지 아닌지 잘 보고 import
 
         // JPA 세팅

@@ -4,9 +4,11 @@ import com.example.umc9th.global.annotation.ExistCategory;
 import com.example.umc9th.global.annotation.ExistMember;
 import com.example.umc9th.global.annotation.ExistRegion;
 import com.example.umc9th.global.annotation.ManagerPermission;
+import jakarta.validation.GroupSequence;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
+import jakarta.validation.groups.Default;
 
 import java.time.LocalTime;
 

@@ -38,8 +38,7 @@ public class ReviewController implements ReviewControllerDocs {
             // @PageableDefault : pageable 객체가 없다면 기본값을 사용할 것
     ){
 
-        ReviewSuccessCode code = ReviewSuccessCode.FOUND;
-        return ApiResponse.onSuccess(code, reviewQueryService.findReview(shopId, pageable));
+        return ApiResponse.onSuccess(ReviewSuccessCode.FOUND, reviewQueryService.findReview(shopId, pageable));
     }
 
     // 내가 작성한 리뷰 목록 조회
@@ -54,7 +53,6 @@ public class ReviewController implements ReviewControllerDocs {
          * 단, 현재 로그인 기능이 존해하지 않으므로 경로 변수에서 id를 받아오는 것으로 임시 처리한다
          */
 
-        ReviewSuccessCode code = ReviewSuccessCode.FOUND;
-        return ApiResponse.onSuccess(code, reviewQueryService.findMyReview(memberId, pageable));
+        return ApiResponse.onSuccess(ReviewSuccessCode.FOUND, reviewQueryService.findMyReview(memberId, pageable));
     }
 }

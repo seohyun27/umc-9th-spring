@@ -36,32 +36,7 @@
 + 서비스에서 처리하는 게 낫다고 함
 
 ### 4. 트러블 슈팅
-+ validator 가 순차적으로 접근을 해야 되는데 각 validation이 독립적으로 체크해서 500에러가 나왔었음
-+ 순서를 적용하는 방법을 찾음
-+ https://eckrin.tistory.com/201 와 gpt 와 공식문서를 참고해서 구현
-+ 블로그나 아무리 찾아봐도 따로 인터페이스를 다른 파일에다가 만들어서 또 그룹을 불러와서 두번 세번 적용하란 글이 많았는데
-+ gpt가 한 번에 작성하는 법을 알려줌
-```java
-    public record registerDTO (
-        Long point,
-        Long standardAmount,
-        @NotNull @ValidDuration
-        LocalDateTime endDate,
-        @NotNull @ExistStore
-        Long storeId,
-        @NotNull(groups = Default.class)
-        @ExistMember(groups = ExistMember.class)
-        @ManagerPermission(groups = ManagerPermissionValidator.class)
-        Long managerId
-){
-    @GroupSequence({
-            registerDTO.class,
-            ExistMember.class,
-            ManagerPermissionValidator.class
-    })
-    public interface ValidationOrder {}
-}
-```
+
 ### 5. 동작 확인(빠르게 확인하기 위해 .http 사용)
 ##### 1) 일반 valid check : 모두 null이거나 blank
 ###### -> 기대: endDate,managerId,storeId에서 모두 에러 표기해야 함

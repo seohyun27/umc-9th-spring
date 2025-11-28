@@ -17,7 +17,7 @@ public class ReviewConverter {
                         .map(ReviewConverter::toReviewPreviewDTO)
                         .toList()
                 )
-                .listSize(result.getSize())
+                .listSize(result.getNumberOfElements())
                 .totalPage(result.getTotalPages())
                 .totalElements(result.getTotalElements())
                 .isFirst(result.isFirst())

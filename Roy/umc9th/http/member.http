@@ -3,10 +3,6 @@ POST http://localhost:8080/sign-up
 Content-Type: application/json
 
 {
-  "name": "yujin",
-  "gender": 1,
-  "type": 0,
-  "birth": "2002-10-15",
   "address": "대구",
-  "preferCategory": []
+  "preferCategory": [1]
 }

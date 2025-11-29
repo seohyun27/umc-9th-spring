@@ -1,6 +1,7 @@
 package com.example.umc9th.domain.mission.entity;
 
 import com.example.umc9th.domain.member.entity.Member;
+import com.example.umc9th.global.entity.BaseEntity;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -12,7 +13,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
 @Table(name = "perform")
-public class Perform {
+public class Perform extends BaseEntity {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   @Column(name = "perform_id")

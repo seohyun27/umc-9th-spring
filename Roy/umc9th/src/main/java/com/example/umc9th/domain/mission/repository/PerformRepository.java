@@ -52,4 +52,6 @@ public interface PerformRepository extends JpaRepository<Perform, Long> {
             @Param("lastId") Long lastId,
             Pageable pageable
     );
+    //미션 아이디와 멤버 아이디로 된 게 존재하는지 체크
+    Boolean existsByMemberIdAndMissionId(Long MemberId,Long MissionId);
 }

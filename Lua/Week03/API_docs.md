@@ -5,12 +5,17 @@
     
 **Request Body** 
   ```json
-    { 
-          "name" : "김세은",
-          "gender" : 1, //남자:0, 여자:1로 설정.
-          "birthday" : "2003-12-06",
-          "address" : "경상북도 경산시"
-    }
+    {
+      "loginId": "test1234",
+      "password": "1234",
+      "name": "김세은",
+      "nickname": "오잉",
+      "email": "test@naver.com",
+      "gender": "FEMALE",
+      "birth": "2003-12-06",
+      "address": "경상북도 포항시",
+      "phoneNumber": "010-1234-5678"
+}
   ```
 **query String** :  X.
     

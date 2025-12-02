@@ -1,64 +1,85 @@
 ### 회원가입 (소셜 로그인 제외)
-**API Endpoint** : POST /auth/users/signup
+**API Endpoint** : `POST /auth/users/signup`
     
-**Request Header** : Content-Type: application/json
+**Request Header** : `Content-Type: application/json`
     
 **Request Body** 
   ```json
-    { 
-          "name" : "김세은",
-          "gender" : 1, //남자:0, 여자:1로 설정.
-          "birthday" : "2003-12-06",
-          "address" : "경상북도 경산시"
-    }
+    {
+      "loginId": "test1234",
+      "password": "1234",
+      "name": "김세은",
+      "nickname": "오잉",
+      "email": "test@naver.com",
+      "gender": "FEMALE",
+      "birth": "2003-12-06",
+      "address": "경상북도 포항시",
+      "phoneNumber": "010-1234-5678"
+}
   ```
-**query String** :  X.
+**query String** :  `X`
     
-**Path variable** : X. (사용자 식별자 존재x)
+**Path variable** : `X`
 
 -------------------------
 ### 홈화면
-**API Endpoint** : GET /users/{userId}/missions
+**API Endpoint** : `GET /missions`
     
-**Request Header** : Authorization : Bearer {accessToken}
+**Request Header** : `Authorization : Bearer {accessToken}`
     
-**Request Body**  : X.
+**Request Body**  : `X`
 
-**query String** :  /users/{userId}/missions?view=home (홈화면이므로 view이름을 home으로)
+**query String** :  `region`, `page`, `size` ex) `/missions?region=안암동&page=1&size=10`
     
-**Path variable** : {userId}
+**Path variable** : `X`
+
+-------------------------
+### 마이 페이지
+**API Endpoint** : `GET /users/profile`
+    
+**Request Header** : `Authorization : Bearer {accessToken}`
+    
+**Request Body** : `X`
+
+**query String** :  `X`
+    
+**Path variable** : `X`
 
 -------------------------
 
 ### (마이페이지) 리뷰 작성
-**API Endpoint** : POST /missions/{missionId}/reviews
+**API Endpoint** : `POST /users/me/reviews`
     
-**Request Header** : Authorization : Bearer {accessToken}
+**Request Header** : `Authorization : Bearer {accessToken`},`Content-Type: application/json`
     
 **Request Body** 
   ```json
     { 
-          "rating" : 4,
-          "review_text" : "음식이 맛있고 식당 분위기도 좋아요!"
-          "photo_url" : "(이미지 파일 url)"
+          "shopId" : 126,
+          "reviewText" : "음식이 맛있고 식당 분위기도 좋아요!"
+          "rating" : "5.0"
+          "reviewImages": [
+            "https://images/photo1.jpg"
+            "https://images/photo2.jpg"
+         ]
     }
   ```
-**query String** :  X.
+**query String** :  `X`
     
-**Path variable** : {missionId}
+**Path variable** : `X`
 
 -------------------------
 
 ### 미션 목록 조회
-**API Endpoint** : GET /users/me/missions
+**API Endpoint** : `GET /users/me/missions`
     
-**Request Header** : Authorization : Bearer {accessToken}
+**Request Header** : `Authorization : Bearer {accessToken}`
     
-**Request Body** : X.
+**Request Body** :`X`
   
-**query String** :  /missions?status=in-process (진행 중), /missions?status=completed (진행 완료)
+**query String** :  `status`, `page`, `size` ex)`/users/me/missions?status=CHALLENGING&page=1&size=10`
     
-**Path variable** : x.
+**Path variable** : `X`
 
 -------------------------
 

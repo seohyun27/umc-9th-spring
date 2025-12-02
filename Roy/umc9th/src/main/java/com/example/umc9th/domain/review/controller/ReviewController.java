@@ -34,6 +34,7 @@ public class ReviewController implements ReviewControllerDocs {
     {
         return ApiResponse.onSuccess(ReviewSuccessCode.CREATED,reviewCommandService.register(dto));
     }
+    @Override
     @GetMapping("/{memberId}")
     public ApiResponse<ReviewResDTO.previewListDTO> getMyReviews(@Valid @ParameterObject ReviewReqDTO.previewListDTO dto, Pageable pageable)
     {

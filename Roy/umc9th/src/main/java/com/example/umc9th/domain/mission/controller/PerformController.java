@@ -7,6 +7,7 @@ import com.example.umc9th.domain.mission.service.command.PerformService;
 import com.example.umc9th.global.apiPayload.ApiResponse;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springdoc.core.annotations.ParameterObject;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -19,7 +20,7 @@ public class PerformController {
 
     @PostMapping("/{missionId}/add")
     public ApiResponse<PerformResDTO.registerDTO> addPerform(
-            @Valid @ModelAttribute PerformReqDTO.registerDTO dto
+            @Valid @ParameterObject PerformReqDTO.registerDTO dto
     )
     {
         return ApiResponse.onSuccess(PerformSuccessCode.CREATED,performService.register(dto));

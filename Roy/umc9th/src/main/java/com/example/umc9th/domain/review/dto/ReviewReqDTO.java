@@ -5,6 +5,7 @@ import com.example.umc9th.global.annotation.ExistStore;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
+import org.springframework.data.domain.Pageable;
 
 import java.util.*;
 
@@ -20,5 +21,8 @@ public class ReviewReqDTO {
             Long memberId,
             @Size(max = 3)
             List<String> reviewPhotos
+    ){}
+    public record previewListDTO(
+            @ExistMember Long memberId
     ){}
 }

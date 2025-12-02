@@ -9,6 +9,8 @@ import com.example.umc9th.global.apiPayload.ApiResponse;
 import com.example.umc9th.global.apiPayload.code.GeneralSuccessCode;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springdoc.core.annotations.ParameterObject;
+import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -16,10 +18,11 @@ import java.util.List;
 @RequiredArgsConstructor
 @RestController
 @RequestMapping("/reviews")
-public class ReviewController {
+public class ReviewController implements ReviewControllerDocs {
 
     private final ReviewQueryService reviewQueryService;
     private final ReviewCommandService reviewCommandService;
+
     @GetMapping("/search")
     public ApiResponse<List<ReviewResDTO.ReviewItemDTO>> searchReview(@RequestParam String query, @RequestParam String type){
         List<ReviewResDTO.ReviewItemDTO> reviewList = reviewQueryService.searchReview(query,type);
@@ -30,5 +33,10 @@ public class ReviewController {
     public ApiResponse<ReviewResDTO.registerDTO> register(@RequestBody @Valid ReviewReqDTO.registerDTO dto)
     {
         return ApiResponse.onSuccess(ReviewSuccessCode.CREATED,reviewCommandService.register(dto));
+    }
+    @GetMapping("/{memberId}")
+    public ApiResponse<ReviewResDTO.previewListDTO> getMyReviews(@Valid @ParameterObject ReviewReqDTO.previewListDTO dto, Pageable pageable)
+    {
+        return ApiResponse.onSuccess(ReviewSuccessCode.FOUND,reviewQueryService.findReview(dto,pageable));
     }
 }

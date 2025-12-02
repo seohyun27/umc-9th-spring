@@ -5,6 +5,7 @@ import lombok.*;
 
 @Entity
 @Builder
+@Setter
 @AllArgsConstructor(access = AccessLevel.PROTECTED)
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Table(name = "review_photo")
@@ -18,6 +19,6 @@ public class ReviewPhoto {
   private String url;
 
   @ManyToOne(fetch = FetchType.LAZY)
-  @JoinColumn(name = "review_id")
+  @JoinColumn(name = "review_id",nullable = false)
   private Review review;
 }

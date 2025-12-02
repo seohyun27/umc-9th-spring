@@ -1,6 +1,7 @@
 package com.example.umc9th.domain.review.repository;
 
-import com.example.umc9th.domain.review.dto.ReviewResDto;
+import com.example.umc9th.domain.member.entity.QMember;
+import com.example.umc9th.domain.review.dto.ReviewResDTO;
 import com.example.umc9th.domain.review.entity.QReview;
 import com.example.umc9th.domain.store.entity.QStore;
 import com.querydsl.core.types.Predicate;
@@ -20,24 +21,28 @@ public class ReviewQueryDslImpl implements ReviewQueryDsl{
 
 
     @Override
-    public List<ReviewResDto.ReviewItemDTO> searchReview(
+    public List<ReviewResDTO.ReviewItemDTO> searchReview(
             Predicate predicate
     ){
         JPAQueryFactory queryFactory = new JPAQueryFactory(em);
 
         QReview review = QReview.review;
         QStore store = QStore.store;
+        QMember member = QMember.member;
 
         return queryFactory
                 .select(com.querydsl.core.types.Projections.constructor(
-                        ReviewResDto.ReviewItemDTO.class,
+                        ReviewResDTO.ReviewItemDTO.class,
                         review.id,
+                        member.name,
                         review.rate,
                         review.content,
-                        store.name
+                        store.name,
+                        review.created_at
                 ))
                 .from(review)
                 .innerJoin(review.store,store)
+                .innerJoin(review.member,member)
                 .where(predicate)
                 .fetch();
     }

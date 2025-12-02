@@ -1,0 +1,10 @@
+POST http://localhost:8080/missions/add
+Content-Type: application/json
+
+{
+  "point": 3000,
+  "standardAmount": 15000,
+  "endDate": "2025-11-29T14:30:00",
+  "managerId": 1,
+  "storeId": 1
+}

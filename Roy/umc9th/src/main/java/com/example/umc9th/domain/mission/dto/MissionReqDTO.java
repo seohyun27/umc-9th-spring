@@ -7,8 +7,6 @@ import com.example.umc9th.global.annotation.ValidDuration;
 import com.example.umc9th.global.validator.ManagerPermissionValidator;
 import jakarta.validation.GroupSequence;
 import jakarta.validation.constraints.NotNull;
-import jakarta.validation.groups.Default;
-import lombok.Builder;
 
 import java.time.LocalDateTime;
 
@@ -32,4 +30,7 @@ public class MissionReqDTO {
         })
         public interface ValidationOrder {}
     }
+    public record previewListDTO(
+            @ExistStore Long storeId
+    ){}
 }

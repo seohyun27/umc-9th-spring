@@ -2,9 +2,11 @@ POST http://localhost:8080/missions/add
 Content-Type: application/json
 
 {
-  "point": 3000,
-  "standardAmount": 15000,
-  "endDate": "2025-11-29T14:30:00",
+  "point": 6000,
+  "standardAmount": 20000,
+  "endDate": "2025-12-20T14:30:00",
   "managerId": 1,
   "storeId": 1
 }
+###
+GET http://localhost:8080/missions/1

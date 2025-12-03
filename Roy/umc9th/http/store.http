@@ -3,12 +3,6 @@ POST http://localhost:8080/store/add
 Content-Type: application/json
 
 {
-  "address": "대구",
-  "name": "떡볶이나라",
-  "openTime": "10:00:00",
-  "closeTime" : "12:00:00",
-  "categoryId" : 1,
-  "memberId": 1,
-  "regionId" : 1
+  "address": "대구"
 }
 

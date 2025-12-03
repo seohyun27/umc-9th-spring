@@ -44,4 +44,12 @@ public class PerformConverter {
                 .isLast(result.isLast())
                 .build();
     }
+    public static PerformResDTO.completedDTO toCompleted(Perform perform)
+    {
+        return PerformResDTO.completedDTO.builder()
+                .mission(MissionConverter.toMissionItem(perform.getMission()))
+                .finishedAt(perform.getFinished_at())
+                .status(perform.getStatus())
+                .build();
+    }
 }

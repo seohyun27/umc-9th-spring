@@ -35,4 +35,9 @@ public class Perform extends BaseEntity {
   @JoinColumn(name = "mission_id")
   private Mission mission;
 
+  public void complete()
+  {
+      this.status = MissionStatus.COMPLETED;
+      this.finished_at = LocalDateTime.now();
+  }
 }

@@ -18,4 +18,8 @@ public class PerformReqDTO {
             @ExistMember Long memberId,
             MissionStatus status
     ){}
+    public record completedDTO(
+            @ExistMember Long memberId,
+            @ExistMission Long missionId
+    ){}
 }

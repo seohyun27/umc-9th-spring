@@ -62,4 +62,5 @@ public interface PerformRepository extends JpaRepository<Perform, Long> {
     Page<Perform> findAllByMemberId(Long memberId, Pageable pageable);
     @EntityGraph
     Page<Perform> findAllByMemberIdAndStatus(Long memberId, MissionStatus status, Pageable pageable);
+    Perform findByMemberIdAndMissionId(Long memberId,Long missionId);
 }

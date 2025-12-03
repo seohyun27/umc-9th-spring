@@ -37,4 +37,9 @@ public class PerformController implements PerformControllerDocs {
     {
         return ApiResponse.onSuccess(MissionSuccessCode.FOUND, performQueryService.findMyMissions(dto,pageable));
     }
+    @PatchMapping("/{missionId}/completed")
+    public ApiResponse<PerformResDTO.completedDTO> setCompletedMission(@Valid @ParameterObject PerformReqDTO.completedDTO dto)
+    {
+        return ApiResponse.onSuccess(PerformSuccessCode.COMPLETED,performQueryService.completeMyMission(dto));
+    }
 }

@@ -1,7 +1,11 @@
 package com.example.umc9th.domain.mission.repository;
 
+import com.example.umc9th.domain.mission.entity.Mission;
 import com.example.umc9th.domain.mission.entity.Perform;
+import com.example.umc9th.domain.mission.enums.MissionStatus;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.repository.EntityGraph;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -27,7 +31,7 @@ public interface PerformRepository extends JpaRepository<Perform, Long> {
             "JOIN FETCH p.mission m " +
             "JOIN FETCH m.store s " +
             "WHERE p.member.id = :memberId " +
-            "AND p.status = false " +
+            "AND p.status = 0 " +
             "AND s.region.unit = :regionName " +
             "ORDER BY m.endDate DESC, p.id DESC")
     List<Perform> findAvailableMissionsByRegionFirstPage(
@@ -41,7 +45,7 @@ public interface PerformRepository extends JpaRepository<Perform, Long> {
             "JOIN FETCH p.mission m " +
             "JOIN FETCH m.store s " +
             "WHERE p.member.id = :memberId " +
-            "AND p.status = false " +
+            "AND p.status = 0 " +
             "AND s.region.unit = :regionName " +
             "AND (m.endDate, p.id) < (:lastEndDate, :lastId) " +
             "ORDER BY m.endDate DESC, p.id DESC")
@@ -54,4 +58,8 @@ public interface PerformRepository extends JpaRepository<Perform, Long> {
     );
     //미션 아이디와 멤버 아이디로 된 게 존재하는지 체크
     Boolean existsByMemberIdAndMissionId(Long MemberId,Long MissionId);
+    @EntityGraph
+    Page<Perform> findAllByMemberId(Long memberId, Pageable pageable);
+    @EntityGraph
+    Page<Perform> findAllByMemberIdAndStatus(Long memberId, MissionStatus status, Pageable pageable);
 }

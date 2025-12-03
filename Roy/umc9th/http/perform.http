@@ -1,1 +1,3 @@
-POST http://localhost:8080/users/1/mission/1/add
+POST http://localhost:8080/users/1/missions/3/add
+###
+GET http://localhost:8080/users/1/missions?status=COMPLETED

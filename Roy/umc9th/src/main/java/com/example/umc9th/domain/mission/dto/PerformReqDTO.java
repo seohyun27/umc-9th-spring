@@ -1,9 +1,10 @@
 package com.example.umc9th.domain.mission.dto;
 
+import com.example.umc9th.domain.mission.enums.MissionStatus;
 import com.example.umc9th.global.annotation.ExistMember;
 import com.example.umc9th.global.annotation.ExistMission;
+import com.example.umc9th.global.annotation.ExistStore;
 import com.example.umc9th.global.annotation.NotExistPerform;
-import org.springframework.validation.annotation.Validated;
 
 public class PerformReqDTO {
     @NotExistPerform
@@ -12,5 +13,9 @@ public class PerformReqDTO {
             Long missionId,
             @ExistMember
             Long memberId
+    ){}
+    public record previewListDTO(
+            @ExistMember Long memberId,
+            MissionStatus status
     ){}
 }

@@ -8,6 +8,7 @@ import com.example.umc9th.domain.mission.dto.PerformResDTO;
 import com.example.umc9th.domain.mission.entity.Mission;
 import com.example.umc9th.domain.mission.entity.Perform;
 import com.example.umc9th.domain.store.entity.Store;
+import org.springframework.data.domain.Page;
 
 public class PerformConverter {
     //Entity -> DTO
@@ -25,6 +26,22 @@ public class PerformConverter {
         return Perform.builder()
                 .member(member)
                 .mission(mission)
+                .build();
+    }
+
+    public static MissionResDTO.previewListDTO toPreviewList(Page<Perform> result)
+    {
+        return MissionResDTO.previewListDTO.builder()
+                .missionList(result.getContent().stream()
+                        .map(Perform::getMission)
+                        .map(MissionConverter::toMissionItem)
+                        .toList()
+                )
+                .listSize(result.getSize())
+                .totalPage(result.getTotalPages())
+                .totalElements(result.getTotalElements())
+                .isFirst(result.isFirst())
+                .isLast(result.isLast())
                 .build();
     }
 }

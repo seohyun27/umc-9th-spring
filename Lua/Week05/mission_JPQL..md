@@ -1,4 +1,3 @@
-
 ##### 리뷰 작성하는 쿼리
 ```sql
 INSERT INTO review (user_id, shop_id, review_text, rating, created_at)

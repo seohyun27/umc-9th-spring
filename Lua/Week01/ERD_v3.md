@@ -3,3 +3,4 @@
 <img width="1000" height="613" alt="image" src="https://github.com/user-attachments/assets/d99bd341-b696-44da-ab96-6a47bbd1efdf" />
 
 ### 지역 local -> region로 변경
+### 리뷰별점 Integer -> Double로 변경

@@ -1,10 +1,7 @@
 package com.example.umc9th.global.validator;
-import com.example.umc9th.domain.member.entity.Member;
-import com.example.umc9th.domain.member.enums.MemberType;
 import com.example.umc9th.domain.member.exception.code.MemberErrorCode;
 import com.example.umc9th.domain.member.repository.MemberRepository;
 import com.example.umc9th.global.annotation.ExistMember;
-import com.example.umc9th.global.annotation.ManagerPermission;
 import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;
 import lombok.RequiredArgsConstructor;

@@ -3,6 +3,7 @@ package com.example.umc9th.domain.member.converter;
 import com.example.umc9th.domain.member.dto.MemberReqDTO;
 import com.example.umc9th.domain.member.dto.MemberResDTO;
 import com.example.umc9th.domain.member.entity.Member;
+import com.example.umc9th.domain.member.enums.Role;
 
 public class MemberConverter {
 
@@ -16,9 +17,13 @@ public class MemberConverter {
     }
 
     //DTO->Entity
-    public static Member toMember(MemberReqDTO.JoinDTO dto)
-    {
+    public static Member toMember(
+            MemberReqDTO.JoinDTO dto,
+            String password
+    ){
         return Member.builder()
+                .email(dto.email())
+                .password(password)
                 .name(dto.name())
                 .birth_date(dto.birth())
                 .address(dto.address())

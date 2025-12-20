@@ -2,7 +2,6 @@ package com.example.umc9th.domain.mission.service.command;
 
 import com.example.umc9th.domain.member.entity.Member;
 import com.example.umc9th.domain.member.repository.MemberRepository;
-import com.example.umc9th.domain.mission.controller.PerformController;
 import com.example.umc9th.domain.mission.converter.PerformConverter;
 import com.example.umc9th.domain.mission.dto.PerformReqDTO;
 import com.example.umc9th.domain.mission.dto.PerformResDTO;
@@ -15,7 +14,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
-public class PerformServiceImpl implements PerformService {
+public class PerformCommandServiceImpl implements PerformCommandService {
     private final MemberRepository memberRepository;
     private final MissionRepository missionRepository;
     private final PerformRepository performRepository;

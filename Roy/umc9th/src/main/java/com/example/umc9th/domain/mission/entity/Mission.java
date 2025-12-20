@@ -30,7 +30,7 @@ public class Mission extends BaseEntity {
   @Column(name = "end_date",nullable = false)
   private LocalDateTime endDate;
 
-  @OneToOne(fetch = FetchType.LAZY)
+  @ManyToOne(fetch = FetchType.LAZY)
   @JoinColumn(name = "store_id",nullable = false)
   private Store store;
 }

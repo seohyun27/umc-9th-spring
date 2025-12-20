@@ -16,7 +16,7 @@ import java.util.Objects;
 
 @Service
 @RequiredArgsConstructor
-public class MissionServiceImpl implements MissionService{
+public class MissionCommandServiceImpl implements MissionCommandService {
     private final MissionRepository missionRepository;
     private final StoreRepository storeRepository;
 

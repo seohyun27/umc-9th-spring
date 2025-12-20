@@ -1,6 +1,7 @@
 package com.example.umc9th.domain.mission.entity;
 
 import com.example.umc9th.domain.member.entity.Member;
+import com.example.umc9th.domain.mission.enums.MissionStatus;
 import com.example.umc9th.global.entity.BaseEntity;
 import jakarta.persistence.*;
 import lombok.*;
@@ -21,7 +22,7 @@ public class Perform extends BaseEntity {
 
   @Column(name = "mission_status", nullable = false)
   @Builder.Default
-  private boolean status = false;
+  private MissionStatus status = MissionStatus.IN_PROGRESS;
 
   @Column(name = "finished_at")
   private LocalDateTime finished_at;
@@ -34,4 +35,9 @@ public class Perform extends BaseEntity {
   @JoinColumn(name = "mission_id")
   private Mission mission;
 
+  public void complete()
+  {
+      this.status = MissionStatus.COMPLETED;
+      this.finished_at = LocalDateTime.now();
+  }
 }

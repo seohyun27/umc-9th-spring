@@ -1,7 +1,5 @@
-package com.example.umc9th.domain.review.entity;
+package com.example.umc9th.domain.mission.entity;
 
-import com.example.umc9th.domain.photo.entity.ReviewPhoto;
-import com.example.umc9th.domain.shop.entity.Shop;
 import com.example.umc9th.domain.user.entity.User;
 import com.example.umc9th.global.entity.BaseEntity;
 import jakarta.persistence.*;
@@ -10,37 +8,32 @@ import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
 
 @Entity
 @Builder
 @NoArgsConstructor(access= AccessLevel.PROTECTED)
 @AllArgsConstructor(access= AccessLevel.PRIVATE)
 @Getter
-@Table(name ="review")
+@Table(name ="user_mission")
 @EntityListeners(AuditingEntityListener.class)
-public class Review extends BaseEntity {
+public class UserMission extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "rating", nullable = false)
-    private Double rating;
+    @Column(name = "is_success")
+    @Builder.Default
+    private Boolean isSuccess = false;
 
-    @Column(name = "review_text", columnDefinition = "TEXT")
-    private String reviewText;
+    @Column(name = "success_time")
+    private LocalDateTime successTime;
 
     @JoinColumn(name="user_id")
     @ManyToOne(fetch = FetchType.LAZY)
     private User user;
 
-    @JoinColumn(name="shop_id")
+    @JoinColumn(name="mission_id")
     @ManyToOne(fetch = FetchType.LAZY)
-    private Shop shop;
-
-    @OneToMany(mappedBy = "review", cascade = CascadeType.ALL)
-    @Builder.Default
-    private List<ReviewPhoto> reviewPhotoList = new ArrayList<>();
+    private Mission mission;
 }

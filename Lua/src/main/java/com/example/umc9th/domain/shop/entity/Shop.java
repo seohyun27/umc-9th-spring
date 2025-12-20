@@ -1,15 +1,18 @@
 package com.example.umc9th.domain.shop.entity;
 
-import com.example.umc9th.domain.local.entity.Local;
-import java.util.ArrayList;
-import java.util.List;
-
+import com.example.umc9th.domain.mission.entity.Mission;
+import com.example.umc9th.domain.photo.entity.ShopPhoto;
+import com.example.umc9th.domain.review.entity.Review;
+import com.example.umc9th.domain.shop.entity.mapping.ShopRegion;
 import com.example.umc9th.domain.user.entity.User;
+import com.example.umc9th.global.entity.BaseEntity;
 import com.example.umc9th.global.enums.Category;
 import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Builder
@@ -17,16 +20,16 @@ import java.time.LocalTime;
 @AllArgsConstructor(access= AccessLevel.PRIVATE)
 @Getter
 @Table(name ="shop")
-public class Shop {
+public class Shop extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "name", length = 15, nullable = false)
+    @Column(name = "name", length = 20, nullable = false)
     private String name;
 
-    @Column(name = "address", length = 50, nullable = false)
+    @Column(name = "address", nullable = false)
     private String address;
 
     @Column(name = "category")
@@ -43,12 +46,19 @@ public class Shop {
     @ManyToOne(fetch = FetchType.LAZY)
     private User user;
 
-    @ManyToMany
-    @JoinTable(
-        name = "shop_local",
-        joinColumns = @JoinColumn(name = "shop_id"),
-        inverseJoinColumns = @JoinColumn(name = "local_id")
-    )
+    @OneToMany(mappedBy = "shop", cascade = CascadeType.ALL)
     @Builder.Default
-    private List<Local> locals = new ArrayList<>();
+    private List<Mission> missionList = new ArrayList<>();
+
+    @OneToMany(mappedBy = "shop", cascade = CascadeType.ALL)
+    @Builder.Default
+    private List<Review> reviewList = new ArrayList<>();
+
+    @OneToMany(mappedBy = "shop", cascade = CascadeType.ALL, orphanRemoval = true)
+    @Builder.Default
+    private List<ShopRegion> shopRegionList = new ArrayList<>();
+
+    @OneToMany(mappedBy = "shop", cascade = CascadeType.ALL)
+    @Builder.Default
+    private List<ShopPhoto> shopPhotoList = new ArrayList<>();
 }

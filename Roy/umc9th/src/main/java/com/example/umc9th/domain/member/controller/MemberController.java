@@ -26,7 +26,7 @@ public class MemberController {
         return ApiResponse.onSuccess(MemberSuccessCode.FOUND,memberCommandService.signup(dto));
     }
     //로그인
-    @PostMapping("/jwt/login")
+    @PostMapping("/login")
     public ApiResponse<MemberResDTO.LoginDTO> login(
             @RequestBody @Valid MemberReqDTO.LoginDTO dto
     ){

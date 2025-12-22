@@ -10,6 +10,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 public class MemberReqDTO {
+    //회원가입
     public record JoinDTO(
             @Email
             String email,
@@ -23,5 +24,12 @@ public class MemberReqDTO {
             String address,
             @ExistFoods
             List<Long> preferCategory
+    ){}
+    //로그인
+    public record LoginDTO(
+            @NotBlank
+            String email,
+            @NotBlank
+            String password
     ){}
 }

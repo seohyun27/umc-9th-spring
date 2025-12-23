@@ -1,7 +1,7 @@
 package com.example.umc9th.domain.review.repository;
 
 import com.example.umc9th.domain.member.entity.QMember;
-import com.example.umc9th.domain.review.entity.QShopReview;
+import com.example.umc9th.domain.review.entity.QReview;
 import com.example.umc9th.domain.review.entity.Review;
 import com.example.umc9th.domain.shop.entity.QShop;
 import com.querydsl.core.types.Predicate;
@@ -26,7 +26,7 @@ public class ReviewRepositoryQueryDslImpl implements ReviewRepositoryQueryDsl {
         JPAQueryFactory queryFactory = new JPAQueryFactory(em);
 
         // Q클래스 선언
-        QShopReview review = QShopReview.shopReview;
+        QReview review = QReview.review;
         QShop shop = QShop.shop;
         QMember member = QMember.member;
 

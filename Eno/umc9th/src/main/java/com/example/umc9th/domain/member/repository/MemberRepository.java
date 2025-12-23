@@ -5,6 +5,7 @@ import com.example.umc9th.domain.member.dto.res.MyPageDto; // 1번에서 만든 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
+
 import java.util.Optional;
 
 public interface MemberRepository extends JpaRepository<Member, Long> {
@@ -28,7 +29,8 @@ SELECT new com.example.umc9th.domain.member.dto.res.MyPageDto(
 )
 FROM Member m
 WHERE m.id = :memberId
-""")
+""")    // 쿼리문이 제대로 작동되지 않아 임시로 채워둠!!!
     Optional<MyPageDto> findMyPageInfoById(@Param("memberId") Long memberId);
-    // 쿼리문이 제대로 작동되지 않아 임시로 채워둠!!!
+
+    Optional<Member> findByEmail(String username);
 }

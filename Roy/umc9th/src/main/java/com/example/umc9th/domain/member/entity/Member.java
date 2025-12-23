@@ -1,7 +1,7 @@
 package com.example.umc9th.domain.member.entity;
 
 import com.example.umc9th.domain.member.enums.Gender;
-import com.example.umc9th.domain.member.enums.MemberType;
+import com.example.umc9th.domain.member.enums.Role;
 import com.example.umc9th.domain.mission.entity.Perform;
 import com.example.umc9th.global.entity.BaseEntity;
 import jakarta.persistence.*;
@@ -25,6 +25,12 @@ public class Member extends BaseEntity {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
 
+  @Column(nullable = false, unique = true)
+  private String email;
+
+  @Column(nullable = false)
+  private String password;
+
   @Column(name = "name", length = 10, nullable = false)
   private String name;
 
@@ -41,7 +47,7 @@ public class Member extends BaseEntity {
 
   @Column(name = "member_type", nullable = false)
   @Enumerated(EnumType.STRING)
-  private MemberType type;
+  private Role type;
 
   @Column(name = "point", nullable = true)
   @Builder.Default

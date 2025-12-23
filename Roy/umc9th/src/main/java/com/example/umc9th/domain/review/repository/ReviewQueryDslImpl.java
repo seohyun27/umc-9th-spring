@@ -1,15 +1,14 @@
 package com.example.umc9th.domain.review.repository;
 
-import com.example.umc9th.domain.review.dto.ReviewDto;
+import com.example.umc9th.domain.member.entity.QMember;
+import com.example.umc9th.domain.review.dto.ReviewResDTO;
 import com.example.umc9th.domain.review.entity.QReview;
-import com.example.umc9th.domain.review.entity.Review;
 import com.example.umc9th.domain.store.entity.QStore;
 import com.querydsl.core.types.Predicate;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import jakarta.persistence.EntityManager;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 
@@ -22,24 +21,28 @@ public class ReviewQueryDslImpl implements ReviewQueryDsl{
 
 
     @Override
-    public List<ReviewDto> searchReview(
+    public List<ReviewResDTO.ReviewItemDTO> searchReview(
             Predicate predicate
     ){
         JPAQueryFactory queryFactory = new JPAQueryFactory(em);
 
         QReview review = QReview.review;
         QStore store = QStore.store;
+        QMember member = QMember.member;
 
         return queryFactory
                 .select(com.querydsl.core.types.Projections.constructor(
-                        ReviewDto.class,
+                        ReviewResDTO.ReviewItemDTO.class,
                         review.id,
+                        member.name,
                         review.rate,
                         review.content,
-                        store.name
+                        store.name,
+                        review.created_at
                 ))
                 .from(review)
-                .leftJoin(review.store,store)
+                .innerJoin(review.store,store)
+                .innerJoin(review.member,member)
                 .where(predicate)
                 .fetch();
     }

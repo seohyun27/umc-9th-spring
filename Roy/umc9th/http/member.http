@@ -1,0 +1,8 @@
+### 특정 지역에 가게 등록하기
+POST http://localhost:8080/sign-up
+Content-Type: application/json
+
+{
+  "address": "대구",
+  "preferCategory": [1]
+}

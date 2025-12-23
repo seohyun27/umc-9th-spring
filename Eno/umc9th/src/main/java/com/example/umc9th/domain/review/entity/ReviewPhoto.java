@@ -20,5 +20,5 @@ public class ReviewPhoto {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "shop_review_id", nullable = false)
-    private ShopReview shopReview;
+    private Review shopReview;
 }

@@ -65,4 +65,6 @@ public interface PointHistoryRepository extends JpaRepository<PointHistory, Long
 ```
 
 # 페이징
+# 정렬 기준
+# Optional<>
 # 메소드

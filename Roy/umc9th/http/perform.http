@@ -1,0 +1,5 @@
+POST http://localhost:8080/users/1/missions/3/add
+###
+GET http://localhost:8080/users/1/missions?status=COMPLETED
+###
+PATCH http://localhost:8080/users/1/missions/1/completed

@@ -1,8 +1,11 @@
 package com.example.umc9th.domain.mission.repository;
 
-import com.example.umc9th.domain.mission.dto.AvailableMissionDto;
-import com.example.umc9th.domain.mission.dto.MyMissionDto;
+import com.example.umc9th.domain.mission.dto.res.AvailableMissionDto;
+import com.example.umc9th.domain.mission.dto.res.MyMissionDto;
 import com.example.umc9th.domain.mission.entity.Mission;
+import com.example.umc9th.domain.review.entity.Review;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -67,4 +70,6 @@ public interface MissionRepository extends JpaRepository<Mission, Long> {
     List<AvailableMissionDto> findAvailableMissionsByAddress(
             @Param("addressPattern") String addressPattern
     );
+
+    Page<Mission> findAllByShopId(Long shopId, Pageable pageable);
 }

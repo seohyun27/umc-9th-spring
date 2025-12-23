@@ -1,10 +1,11 @@
 package com.example.umc9th.domain.member.repository;
 
 import com.example.umc9th.domain.member.entity.Member;
-import com.example.umc9th.domain.member.dto.MyPageDto; // 1번에서 만든 DTO
+import com.example.umc9th.domain.member.dto.res.MyPageDto; // 1번에서 만든 DTO
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
+
 import java.util.Optional;
 
 public interface MemberRepository extends JpaRepository<Member, Long> {
@@ -19,19 +20,17 @@ public interface MemberRepository extends JpaRepository<Member, Long> {
      * 조회하고자 하는 유저의 정보를 모두 그룹으로 묶고 그룹으로 묶은 정보와 합계 포인트를 MyPageDto에 채워넣는다
      **/
     @Query("""
-           SELECT new com.example.umc9th.domain.member.dto.MyPageDto(
-               m.name,
-               m.gender,
-               m.birthDate,
-               m.address,
-               COALESCE(SUM(mi.point), 0L)
-           )
-           FROM Member m
-           LEFT JOIN MemberMission mm ON m.id = mm.member.id
-           LEFT JOIN mm.mission mi
-           WHERE m.id = :memberId
-           GROUP BY m.id, m.name, m.gender, m.birthDate, m.address
-           """)
+SELECT new com.example.umc9th.domain.member.dto.res.MyPageDto(
+    m.name,
+    m.gender,
+    m.birthDate,
+    m.address,
+    0
+)
+FROM Member m
+WHERE m.id = :memberId
+""")    // 쿼리문이 제대로 작동되지 않아 임시로 채워둠!!!
     Optional<MyPageDto> findMyPageInfoById(@Param("memberId") Long memberId);
 
+    Optional<Member> findByEmail(String username);
 }

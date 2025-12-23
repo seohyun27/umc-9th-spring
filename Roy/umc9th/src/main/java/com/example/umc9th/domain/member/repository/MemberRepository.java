@@ -6,10 +6,9 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import java.util.List;
+import java.util.Optional;
 
 
 public interface MemberRepository extends JpaRepository<Member, Long> {
-
-    @Query("SELECT m FROM Member m WHERE m.id = :memberId")
-    List<Member> findMemberById(@Param("memberId") Long memberId);
+    Optional<Member> findByEmail(String username);
 }

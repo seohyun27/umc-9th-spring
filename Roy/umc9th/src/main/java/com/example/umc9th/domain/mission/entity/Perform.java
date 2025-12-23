@@ -1,6 +1,8 @@
 package com.example.umc9th.domain.mission.entity;
 
 import com.example.umc9th.domain.member.entity.Member;
+import com.example.umc9th.domain.mission.enums.MissionStatus;
+import com.example.umc9th.global.entity.BaseEntity;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -12,7 +14,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
 @Table(name = "perform")
-public class Perform {
+public class Perform extends BaseEntity {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   @Column(name = "perform_id")
@@ -20,7 +22,7 @@ public class Perform {
 
   @Column(name = "mission_status", nullable = false)
   @Builder.Default
-  private boolean status = false;
+  private MissionStatus status = MissionStatus.IN_PROGRESS;
 
   @Column(name = "finished_at")
   private LocalDateTime finished_at;
@@ -33,4 +35,9 @@ public class Perform {
   @JoinColumn(name = "mission_id")
   private Mission mission;
 
+  public void complete()
+  {
+      this.status = MissionStatus.COMPLETED;
+      this.finished_at = LocalDateTime.now();
+  }
 }

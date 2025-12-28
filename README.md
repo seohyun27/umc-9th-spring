@@ -46,7 +46,7 @@ Curriculum & Mission의 Study Note는 모두 이곳의 요약본입니다.
 
 #### 1. DB 정규화: 다대다(M:N) 관계 해소 및 책임 분리
 > 미션(정적 정보)과 유저의 수행 기록(동적 정보)을 한 테이블에서 관리하려는 설계를 지적하고, **중간 매핑 테이블(UserMission)을 도입하여 책임을 분리**하도록 가이드했습니다. 이를 통해 데이터 중복을 막고 쿼리 작성의 효율성을 높였습니다.
-![review_capture_db_design](./docs/image/db-design.png)
+![review_capture_db_design](./docs/images/db-design.png)
 
 #### 2. JPA 조회 성능 분석 및 상황별 쿼리 최적화 전략
 > 모든 쿼리를 튜닝하는 것이 아니라, PK 기반 단건 조회의 효율성과 연관관계 목록 조회의 N+1 문제를 명확히 구분했습니다. 성능 이슈가 발생하는 지점에만 선별적으로 Fetch Join을 도입하여 생산성과 성능의 균형을 맞췄습니다.

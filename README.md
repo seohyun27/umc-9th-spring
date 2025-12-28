@@ -49,11 +49,9 @@ Curriculum & Mission의 Study Note는 모두 이곳의 요약본입니다.
 ![review_capture_db_design](./docs/images/db-design.png)
 
 #### 2. JPA 조회 성능 분석 및 상황별 쿼리 최적화 전략
-> 모든 쿼리를 튜닝하는 것이 아니라, PK 기반 단건 조회의 효율성과 연관관계 목록 조회의 N+1 문제를 명확히 구분했습니다. 성능 이슈가 발생하는 지점에만 선별적으로 Fetch Join을 도입하여 생산성과 성능의 균형을 맞췄습니다.
- 
+> 모든 쿼리를 튜닝하는 것이 아니라, PK 기반 단건 조회의 효율성과 연관관계 목록 조회의 N+1 문제를 명확히 구분했습니다. 성능 이슈가 발생하는 지점에만 선별적으로 Fetch Join을 도입하여 생산성과 성능의 균형을 맞췄습니다.<br/><br/>
 **Case 1. 효율적인 조회: 단건 조회는 기본 메소드 유지를 권장**
 ![review_capture_jpa_n+1](./docs/images/jpa-n+1-1.png)
-
 **Case 2. 성능 이슈 해결: 리스트 조회 시 발생하는 N+1 문제에 Fetch Join 적용**
 ![review_capture_jpa_n+1](./docs/images/jpa-n+1-2.png)
 

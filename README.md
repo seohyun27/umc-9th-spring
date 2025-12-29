@@ -65,7 +65,7 @@ Curriculum & Mission의 Study Note는 모두 이곳의 요약본입니다.
 **1. Facilitator: 동반 성장을 위한 기술 가이드**<br/>
 팀원 간 기술 격차를 줄이고 전체적인 개발 역량을 상향 평준화하는 데 주력했습니다.
 
-* **Onboarding Guide:** Spring Boot가 낯선 팀원에게 **'Controller - Service - Repository - Entity'**로 이어지는 계층형 아키텍처(Layered Architecture)의 데이터 흐름을 도식화하여 설명하고, 프로젝트 적응을 도왔습니다.
+* **Onboarding Guide:** Spring Boot가 낯선 팀원에게 <b>'Controller - Service - Repository - Entity'</b>로 이어지는 계층형 아키텍처(Layered Architecture)의 데이터 흐름을 도식화하여 설명하고, 프로젝트 적응을 도왔습니다.
 * **Mentoring:** 진도를 어려워하는 팀원을 방치하지 않고 1:1로 이끌어 전원 완주를 목표로 했습니다.
 
 **2. Deep Dive: 집요한 탐구와 지식 공유 (N+1 문제)**<br/>

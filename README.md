@@ -1,5 +1,5 @@
 # 🌱 UMC 9th Yeungnam Univ. Spring Boot Study
-> **영남대학교 UMC 9기 Spring Boot 파트 미션 및 코드 리뷰 저장소**
+**영남대학교 UMC 9기 Spring Boot 파트 미션 및 코드 리뷰 저장소**
 
 ## 📢 Overview
 * **Role:** Spring Part Leader (파트장)
@@ -46,17 +46,21 @@ Curriculum & Mission의 Study Note는 모두 이곳의 요약본입니다.
 
 #### 1. DB 정규화: 다대다(M:N) 관계 해소 및 책임 분리
 > 미션(정적 정보)과 유저의 수행 기록(동적 정보)을 한 테이블에서 관리하려는 설계를 지적하고, **중간 매핑 테이블(UserMission)을 도입하여 책임을 분리**하도록 가이드했습니다. 이를 통해 데이터 중복을 막고 쿼리 작성의 효율성을 높였습니다.
+
 ![review_capture_db_design](./docs/images/db-design.png)
 
 #### 2. JPA 조회 성능 분석 및 상황별 쿼리 최적화 전략
 > 모든 쿼리를 튜닝하는 것이 아니라, PK 기반 단건 조회의 효율성과 연관관계 목록 조회의 N+1 문제를 명확히 구분했습니다. 성능 이슈가 발생하는 지점에만 선별적으로 Fetch Join을 도입하여 생산성과 성능의 균형을 맞췄습니다.<br/><br/>
+
 **Case 1. 효율적인 조회: 단건 조회는 기본 메소드 유지를 권장**
 ![review_capture_jpa_n+1](./docs/images/jpa-n+1-1.png)
+
 **Case 2. 성능 이슈 해결: 리스트 조회 시 발생하는 N+1 문제에 Fetch Join 적용**
 ![review_capture_jpa_n+1](./docs/images/jpa-n+1-2.png)
 
 #### 3. 쿼리 효율화: FK 활용을 통한 불필요한 Join 제거
 > 필터링 조건인 `user_id`가 이미 Review 테이블의 FK로 존재함을 파악하여, **불필요한 User 테이블과의 Join을 제거**하도록 제안했습니다. 무의식적인 연관관계 탐색을 줄이고 쿼리 성능을 최적화했습니다.
+
 ![review_capture_join_optimization](./docs/images/join-optimization.png)
 
 ## 📝 Part Leader's Note

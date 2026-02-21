@@ -13,7 +13,7 @@
 | Week | Topic | Key Keywords | Study Note |
 | :---: | :--- | :--- | :---: |
 | **0주차** | 데이터베이스 설계 | `ERD`, `정규화` | [📄 요약 보기](https://github.com/seohyun27/umc-study-note/tree/main/Week00) |
-| **1주차** | SQL - Query 작성 | `join`, `subquery`, `트랜잭션`, `where` | [📄 요약 보기](https://github.com/seohyun27/umc-study-note/tree/main/Week01) |
+| **1주차** | SQL - Query 작성 | `join`, `subquery`, `트랜잭션`, `where` | [📄 요약 보기](https://github.com/seohyun27/umc-study-note/tree/main/Week01) 
 | **2주차** | Spring Boot 개념 | `제어 역전`, `의존성 주입`, `Bean` | [📄 요약 보기](https://github.com/seohyun27/umc-study-note/tree/main/Week02) |
 | **3주차** | API 설계 및 개발 | `REST API`, `HTTP 메소드` | [📄 요약 보기](https://github.com/seohyun27/umc-study-note/tree/main/Week03) |
 | **4주차** | JPA 기초 및 프로젝트 구조 | `엔티티 매핑`, `N+1 문제`, `계층형`, `도메인형` | [📄 요약 보기](https://github.com/seohyun27/umc-study-note/tree/main/Week04) |
